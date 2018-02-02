@@ -10,7 +10,10 @@
     <script src="../addons/p5.sound.min.js"></script>
   </head>
   <body>
+    <!-- Sketch Container -->
     <div id="sketch-container"></div>
+
+    <!-- Left Sidebar Menu -->
     <div class="sidebar-left">
       <div id="pencil" class="icon-option" title="Pencil">
         <i class="flaticon-pencil"></i>  
@@ -27,10 +30,10 @@
       <div id="scissors" class="icon-option" title="Scissors">
         <i class="flaticon-scissors"></i>
       </div>
-      <div id="rule" class="icon-option" title="Rotate">
+      <div id="rotate" class="icon-option" title="Rotate">
         <i class="flaticon-rotate"></i>    
       </div>
-      <div id="lens" class="icon-option" title="Lens">
+      <div id="zoom" class="icon-option" title="Zoom">
         <i class="flaticon-lens"></i>
       </div>
       <div id="compass" class="icon-option" title="Compass">
@@ -40,18 +43,37 @@
         <i class="flaticon-paper"></i>
       </div>
     </div>
-    <div class="sidebar-right">
-      <os-color-picker ng-model="ctrl.color"></os-color-picker>
-    </div>
-    <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-    <!-- normal script imports etc  -->
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <!-- Right Sidebar Menu -->
+    <div class="sidebar-right">
+      <div class="wheel" id="colorWheelDemo"></div>
+    </div>
+
+    <script> if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../semantic/out/semantic.min.js"></script>
     <script type="text/javascript" src="handler.js"> </script>
     <script src="sketch.js"></script>
-    <!-- Insert this line after script imports -->
+    <script src="../addons/iro.js-master/dist/iro.min.js"></script>
+    <script type="text/javascript" charset="utf-8"> 
+      const demoColorPicker = new iro.ColorPicker("#colorWheelDemo", {
+        width: 200,
+        height: 200,
+        color: "#fff",
+        markerRadius: 6,
+        padding: 0,
+        // sliderMargin: 8,
+        sliderHeight: 14,
+        borderWidth: 1,
+        borderColor: "#fff",
+        anticlockwise: true,
+      });
+
+      demoColorPicker.on("color:change", function(color, changes) {
+        activeColor = color.hexString;
+        console.log(activeColor)
+      });
+    </script>
     <script>if (window.module) module = window.module;</script>
   </body>
 </html>

@@ -1,3 +1,23 @@
+@font-face {
+  font-family: roboto-regular;
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: roboto-light;
+  src: url(../fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+  font-family: roboto-medium;
+  src: url(../fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: roboto-thin;
+  src: url(../fonts/Roboto-Thin.ttf);
+}
+
 html, body {
   height: 100%;
 }
@@ -13,10 +33,7 @@ body {
 }
 
 /* #sketch-container {
-  -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
-  -moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
-  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.3);
-  background-color: red;
+  display: ;
 } */
 
 .sidebar-left {
@@ -33,9 +50,9 @@ body {
   left: 0;
   width: 50px;
   background-color: #252A30;
-  -webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
-  -moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
-  box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 1px 0px 1px 1px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 0px 1px 1px rgba(0,0,0,0.3);
+  box-shadow:   1px 0px 1px 1px rgba(0,0,0,0.3);
 }
 
 .sidebar-right {
@@ -51,10 +68,11 @@ body {
   top: 0;
   right: 0;
   width: 200px;
+  padding-top: 20px;
   background-color: #252A30;
-  -webkit-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
-  -moz-box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
-  box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
+  -webkit-box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.3);
+  -moz-box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.3);
+  box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.3);
 }
 
 .icon-option {
@@ -66,11 +84,10 @@ body {
   cursor: pointer;
 }
 
-.icon-option:hover {
+.icon-option:hover:not(.active-option) {
   background-color: #45494C;
-
 }
 
 .active-option {
-  background-color: #45494C;
+  background-color: #1d2126;
 }

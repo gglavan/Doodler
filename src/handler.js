@@ -3,13 +3,14 @@
 
 let prevTool = null;
 let activeTool;
+let activeColor = "#000";
 
 /////////////////////////////////////////////////
 
 const Pencil = {
     body: document.getElementById('pencil'),
-    size: 1,
-    color: '#000',
+    size: 2,
+    color: activeColor,
     active: false
 }
 
@@ -30,8 +31,8 @@ function pencilDraw() {
 
 const Brush = {
     body: document.getElementById('brush'),
-    size: 5,
-    color: '#000',
+    size: 8,
+    color: activeColor,
     active: false
 }
 
@@ -63,6 +64,7 @@ function colorSelector() {
     activeTool = Palette;
     Palette.body.classList.add('active-option');
     Palette.active = true;
+
 }
 
 /////////////////////////////////////////////////
@@ -88,46 +90,61 @@ function erase() {
 /////////////////////////////////////////////////
 
 const Crop = {
-    body: document.getElementById('rubber'),
+    body: document.getElementById('scissors'),
     size: 5,
     active: false
 }
 
-Rubber.body.addEventListener('click', erase);
+Crop.body.addEventListener('click', crop);
 
-function erase() {
+function crop() {
     if (prevTool)
         prevTool.body.classList.remove('active-option')
-    prevTool = Rubber;
-    activeTool = Rubber;
-    Rubber.body.classList.add('active-option');
-    Rubber.active = true;
+    prevTool = Crop;
+    activeTool = Crop;
+    Crop.body.classList.add('active-option');
+    Crop.active = true;
 }
 
+/////////////////////////////////////////////////
+
+const Rotate = {
+    body: document.getElementById('rotate'),
+    size: 5,
+    active: false
+}
+
+Rotate.body.addEventListener('click', rotate);
+
+function rotate() {
+    if (prevTool)
+        prevTool.body.classList.remove('active-option')
+    prevTool = Rotate;
+    activeTool = Rotate;
+    Rotate.body.classList.add('active-option');
+    Rotate.active = true;
+}
+
+/////////////////////////////////////////////////
+
+const Zoom = {
+    body: document.getElementById('zoom'),
+    size: 5,
+    active: false
+}
+
+Zoom.body.addEventListener('click', zoom);
+
+function zoom() {
+    if (prevTool)
+        prevTool.body.classList.remove('active-option')
+    prevTool = Zoom;
+    activeTool = Zoom;
+    Zoom.body.classList.add('active-option');
+    Zoom.active = true;
+}
 
 
 
 
 // export default activePencil;
-
-
-// window.onload = function() {
-//   if (window.jQuery) {  
-//       // jQuery is loaded  
-//       alert("Yeah!");
-//   } else {
-//       // jQuery is not loaded
-//       alert("Doesn't Work");
-//   }
-// }
-
-
-
-// $('#pencil')
-//   .popup({
-//     position : 'right center',
-//     target   : '#pencil',
-//     title    : 'My favorite dog',
-//     content  : 'My favorite dog would like other dogs as much as themselves'
-//   })
-// ;
