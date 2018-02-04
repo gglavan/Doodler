@@ -5,9 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/icons/flaticon.css">
-    <script src="../addons/p5.min.js"></script>
-    <script src="../addons/p5.dom.min.js"></script>
-    <script src="../addons/p5.sound.min.js"></script>
+    
   </head>
   <body>
     <!-- Sketch Container -->
@@ -45,35 +43,24 @@
     </div>
 
     <!-- Right Sidebar Menu -->
-    <div class="sidebar-right">
+    <div class="sidebar-right" id="sidebar-tool-option">
       <div class="wheel" id="colorWheelDemo"></div>
     </div>
 
     <script> if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="../addons/p5.min.js"></script>
+    <script src="../addons/p5.dom.min.js"></script>
+    <script src="../addons/p5.sound.min.js"></script>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../semantic/out/semantic.min.js"></script>
     <script type="text/javascript" src="handler.js"> </script>
     <script src="sketch.js"></script>
     <script src="../addons/iro.js-master/dist/iro.min.js"></script>
-    <script type="text/javascript" charset="utf-8"> 
-      const demoColorPicker = new iro.ColorPicker("#colorWheelDemo", {
-        width: 200,
-        height: 200,
-        color: "#fff",
-        markerRadius: 6,
-        padding: 0,
-        // sliderMargin: 8,
-        sliderHeight: 14,
-        borderWidth: 1,
-        borderColor: "#fff",
-        anticlockwise: true,
-      });
-
-      demoColorPicker.on("color:change", function(color, changes) {
-        activeColor = color.hexString;
-        console.log(activeColor)
-      });
+    <script src="palette.js"></script>
+    <script>
+      if (window.module) 
+        module = window.module;
     </script>
-    <script>if (window.module) module = window.module;</script>
+  
   </body>
 </html>

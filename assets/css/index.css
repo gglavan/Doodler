@@ -20,6 +20,7 @@
 
 html, body {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -32,9 +33,9 @@ body {
   align-items: center;
 }
 
-/* #sketch-container {
-  display: ;
-} */
+#sketch-container {
+  margin-right: 150px;
+}
 
 .sidebar-left {
   display: -webkit-flex;

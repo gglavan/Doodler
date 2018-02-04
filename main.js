@@ -1,6 +1,8 @@
 const {app, BrowserWindow, Menu} = require('electron');
+const dialog = require('electron').dialog;
 const path = require('path');
 const url = require('url');
+const ipc = require('electron').ipcMain;
 
 let win;
 
@@ -24,7 +26,6 @@ function createWindow () {
     win.show();
   })
   
-
   win.webContents.openDevTools()
 
   win.on('closed', () => {
@@ -49,14 +50,18 @@ function createWindow () {
         label: 'Open...',
         accelerator: process.platform === 'darwin' ? 'Cmd+O' : 'Ctrl+O',
         click() {
-          
+          dialog.showOpenDialog({
+            properties: ['openFile']
+          }, function (file) {
+            if (file) win.webContents.send('open-file', file);
+          })          
         }
       },
       {
         label: 'Save as...',
         accelerator: process.platform === 'darwin' ? 'Cmd+S' : 'Ctrl+S',
         click() {
-          
+          win.webContents.send('save-file');
         }
       },
       {
