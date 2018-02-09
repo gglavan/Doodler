@@ -33,8 +33,10 @@ body {
   align-items: center;
 }
 
-#sketch-container {
+canvas {
+  cursor: pointer;
   margin-right: 150px;
+  background-color: #fff;
 }
 
 .sidebar-left {
@@ -58,6 +60,7 @@ body {
 
 .sidebar-right {
   display: -webkit-flex;
+  color: #fff;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
@@ -67,13 +70,24 @@ body {
   height: 100%;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -205px;
   width: 200px;
+  z-index: 0;
   padding-top: 20px;
   background-color: #252A30;
   -webkit-box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.3);
   -moz-box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.3);
   box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.3);
+  transition: right 200ms ease-out;
+  -moz-transition: right 200ms ease-out;
+  -ms-transition: right 200ms ease-out;
+  -o-transition: right 200ms ease-out;
+  -webkit-transition: right 200ms ease-out;
+}
+
+.slide {
+  right: 0;
+  z-index: 2;
 }
 
 .icon-option {
@@ -91,4 +105,44 @@ body {
 
 .active-option {
   background-color: #1d2126;
+}
+
+/* Sliders */
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
 }

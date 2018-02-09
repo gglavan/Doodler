@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 01/02/2018 07:11
+  	Creation date: 09/02/2018 16:05
   	*/
 
 @font-face {
@@ -29,13 +29,23 @@
   color: #BCBDC0;
 }
 
-.flaticon-paper:before { content: "\f100"; }
-.flaticon-lens:before { content: "\f101"; }
-.flaticon-brush:before { content: "\f102"; }
-.flaticon-color-palette:before { content: "\f103"; }
-.flaticon-rule:before { content: "\f104"; }
+.flaticon-reflect:before { content: "\f100"; }
+.flaticon-rotate:before { content: "\f101"; }
+.flaticon-loupe:before { content: "\f102"; }
+.flaticon-paint-palette:before { content: "\f103"; }
+.flaticon-right-triangle:before { content: "\f104"; }
 .flaticon-compass:before { content: "\f105"; }
-.flaticon-rubber:before { content: "\f106"; }
-.flaticon-scissors:before { content: "\f107"; }
-.flaticon-pencil:before { content: "\f108"; }
-.flaticon-rotate:before { content: "\f109"; }
+.flaticon-eraser:before { content: "\f106"; }
+.flaticon-circle-ruler:before { content: "\f107"; }
+.flaticon-graphic-design-tool:before { content: "\f108"; }
+.flaticon-paper:before { content: "\f109"; }
+.flaticon-eyedropper:before { content: "\f10a"; }
+.flaticon-pen-tool:before { content: "\f10b"; }
+.flaticon-scissors:before { content: "\f10c"; }
+.flaticon-paint-can:before { content: "\f10d"; }
+.flaticon-ruler:before { content: "\f10e"; }
+.flaticon-pencil:before { content: "\f10f"; }
+.flaticon-transform-box:before { content: "\f110"; }
+.flaticon-graphic-design:before { content: "\f111"; }
+.flaticon-paint-brush:before { content: "\f112"; }
+.flaticon-paint-palette-and-brush:before { content: "\f113"; }

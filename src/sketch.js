@@ -1,42 +1,42 @@
-function setup() {
-  const canvas = createCanvas(800, 600);
-  background(255);
-  canvas.parent('sketch-container');
-  document.getElementById('paper').addEventListener('click', () => background(255));
-  // blendMode(MULTIPLY);
-}
+let mousePressed = false;
+let lastX, lastY;
 
+const canvas = document.getElementById('can');
+const ctx = canvas.getContext("2d");
 
-// push();
+canvas.width = 800;
+canvas.height = 600;
 
-//  	translate(200, 200);
-//  	rotate(radians(30));  
-//  	scale(0.5);
+canvas.addEventListener('mousedown', function (e) {
+  mousePressed = true;
+  Draw(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop, false);
+});
 
-//   image(schnauzer, 0, 0);
-
-// pop();
-
-// function draw() {
-  
-// }
-
-function mouseDragged() {
-  if(activeTool == Crop) {
-
+canvas.addEventListener('mousemove', function (e) {
+  if (mousePressed) {
+    Draw(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop, true);
   }
-  
-  if (activeTool) {
-    strokeWeight(activeTool.size);
-    if(activeTool != Rubber) {
-      stroke(activeColor);
-    } else {
-      stroke(activeTool.color);
-    }
-    line(mouseX, mouseY, pmouseX, pmouseY);
-    return false;
-  } else {
-    return;
-  }
-}
+});
 
+canvas.addEventListener('mouseup', function (e) {
+  mousePressed = false;
+});
+
+canvas.addEventListener('mouseout', function (e) {
+  mousePressed = false;
+});
+
+function Draw(x, y, isDown) {
+  if (isDown) {
+    ctx.beginPath();
+    ctx.strokeStyle = activeColor;
+    ctx.lineWidth = activeTool.size;
+    ctx.lineJoin = "round";
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.closePath();
+    ctx.stroke();
+  }
+  lastX = x;
+  lastY = y;
+}

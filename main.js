@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Menu} = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const dialog = require('electron').dialog;
 const path = require('path');
 const url = require('url');
@@ -61,7 +61,11 @@ function createWindow () {
         label: 'Save as...',
         accelerator: process.platform === 'darwin' ? 'Cmd+S' : 'Ctrl+S',
         click() {
-          win.webContents.send('save-file');
+          dialog.showSaveDialog({
+            properties: ['saveFile']
+          }, function (file) {
+            if (file) win.webContents.send('save-file', file);
+          })
         }
       },
       {
@@ -98,6 +102,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (win === null) {
-    createWindow()
+    createWindow();
   }
 });

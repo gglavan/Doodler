@@ -1,7 +1,7 @@
 const demoColorPicker = new iro.ColorPicker("#colorWheelDemo", {
   width: 200,
   height: 200,
-  color: "#fff",
+  color: "rgb(255, 0, 0)",
   markerRadius: 6,
   padding: 0,
   // sliderMargin: 8,
