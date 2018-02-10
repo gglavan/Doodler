@@ -1,18 +1,16 @@
 const ipcRenderer = require('electron').ipcRenderer;
-const { webFrame } = require('electron');
+const webFrame = require('electron');
 const canvasBuffer = require('electron-canvas-to-buffer')
 const fs = require('fs')
-const dialog = require('electron').dialog;
 
 let img;
-let degrees = 0;
 
 ipcRenderer.on('open-file', (event, file) => {
 	img = new Image();
 	img.onload = function () {
 		canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, img.width, img.height);
+		canvas.height = img.height;
+		ctx.drawImage(img, 0, 0, img.width, img.height);
 	};
 	img.src = file;
 });
@@ -197,23 +195,20 @@ function rotate() {
 	Rotate.body.classList.add('active-option');
 	Rotate.active = true;
 
-  degrees += 90
-  if (degrees >= 360) degrees = 0;
-  
-  if (degrees === 0 || degrees === 180 ) {
-      canvas.width = img.width;
-      canvas.height = img.height;
-  }
-  else {
-      canvas.width = img.height;
-      canvas.height = img.width;
-  }
+	const tempCanvas = document.createElement("canvas");
+	const tempCtx = tempCanvas.getContext("2d");
+
+	tempCanvas.width = canvas.width;
+	tempCanvas.height = canvas.height;
+	tempCtx.drawImage(canvas, 0, 0);
+
+	canvas.width = tempCanvas.height;
+	canvas.height = tempCanvas.width;
+
 	ctx.save();
-	// you want to rotate around center of canvas
-	ctx.translate(canvas.width/2,canvas.height/2);
-	
-	ctx.rotate(degrees*Math.PI/180);
-	ctx.drawImage(img, -img.width*0.5, -img.height*0.5);
+	ctx.translate(canvas.width / 2, canvas.height / 2);
+	ctx.rotate(90 * Math.PI / 180);
+	ctx.drawImage(tempCanvas, -tempCanvas.width * 0.5, -tempCanvas.height * 0.5);
 	ctx.restore();
 }
 
