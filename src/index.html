@@ -48,25 +48,34 @@
 
     <!-- Right Sidebar Menu -->
     <div class="sidebar-right" id="pencil-sidebar">
-      <h3>Pencil</h3>
+      <div class="sidebar-title">Pencil</div>
+      <div class="title-separator"></div>
       <div class="""slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        <p>Value: <span id="demo"></span></p>
+        <div>Size: <span id="pencil-size"></span>px</div>
+        <input type="range" min="1" max="100" value="2" class="slider" id="pencil-size-slider">
       </div>
     </div>
     <div class="sidebar-right" id="line-sidebar">
-      <h3>Brush</h3>
+      <div class="sidebar-title">Line</div>
+      <div class="title-separator"></div>
       <div class="""slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        <p>Value: <span id="demo"></span></p>
+        <div>Size: <span id="line-size"></span>px</div>
+        <input type="range" min="1" max="100" value="2" class="slider" id="line-size-slider">
       </div>
     </div>
     <div class="sidebar-right" id="palette-sidebar">
-        <div class="wheel" id="colorWheelDemo"></div>
-        <input type="number">
+      <div class="sidebar-title">Palette</div>
+      <div class="title-separator"></div>
+      <div class="wheel" id="colorWheelDemo"></div>
+      <!-- <input type="number"> -->
     </div>
     <div class="sidebar-right" id="rubber-sidebar">
-      <h3>Rubber</h3>
+      <div class="sidebar-title">Rubber</div>
+      <div class="title-separator"></div>
+      <div class="""slidecontainer">
+        <div>Size: <span id="rubber-size"></span>px</div>
+        <input type="range" min="1" max="100" value="10" class="slider" id="rubber-size-slider">
+      </div>
     </div>
     <div class="sidebar-right" id="scissors-sidebar">
       <h3>Scissors</h3>
