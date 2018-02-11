@@ -4,6 +4,8 @@ const canvasBuffer = require('electron-canvas-to-buffer')
 const fs = require('fs')
 
 let img;
+let cPushArray = new Array();
+let cStep = -1;
 
 ipcRenderer.on('open-file', (event, file) => {
 	img = new Image();
@@ -11,6 +13,8 @@ ipcRenderer.on('open-file', (event, file) => {
 		canvas.width = img.width;
 		canvas.height = img.height;
 		ctx.drawImage(img, 0, 0, img.width, img.height);
+		cPushArray = new Array();
+		cStep = -1;
 	};
 	img.src = file;
 });
@@ -21,6 +25,14 @@ ipcRenderer.on('save-file', (event, file) => {
 		if (err) throw err;
 		else console.log(`Write of, ${file}, was successful`);
 	})
+});
+
+ipcRenderer.on('undo-option', (event) => {
+	cUndo();	
+});
+
+ipcRenderer.on('redo-option', (event) => {
+	cRedo();	
 });
 
 let prevTool = null;

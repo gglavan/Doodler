@@ -6,12 +6,13 @@ const tempCtx = tempCanvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 600;
 
+ctx.fillStyle="#fff";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 let mousePressed = false;
 let lastX, lastY;
 let stPoint;
 let endPoint;
-let cPushArray = new Array();
-let cStep = -1;
 
 canvas.addEventListener('mousedown', function (e) {
   mousePressed = true;
@@ -40,12 +41,14 @@ canvas.addEventListener('mousemove', function (e) {
 
 canvas.addEventListener('mouseup', function (e) {
   mousePressed = false;
+  cPush();
   if (activeTool == Line)
     mouseUp(e);
 });
 
 canvas.addEventListener('mouseout', function (e) {
   mousePressed = false;
+  cPush();
 });
 
 function Draw(x, y, isDown) {
@@ -99,4 +102,31 @@ function mouseMove(e) {
 function mouseUp(e) {
   mousePressed = false;
   endPoint = new Point(e.layerX, e.layerY); //get end point
+}
+
+function cPush() {
+  cStep++;
+  if (cStep < cPushArray.length) { cPushArray.length = cStep; }
+  cPushArray.push(document.getElementById('can').toDataURL());
+  document.title = cStep + ":" + cPushArray.length;
+}
+
+function cUndo() {
+  if (cStep > 0) {
+      cStep--;
+      var canvasPic = new Image();
+      canvasPic.src = cPushArray[cStep];
+      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+      document.title = cStep + ":" + cPushArray.length;
+  }
+}
+
+function cRedo() {
+  if (cStep < cPushArray.length-1) {
+      cStep++;
+      var canvasPic = new Image();
+      canvasPic.src = cPushArray[cStep];
+      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
+      document.title = cStep + ":" + cPushArray.length;
+  }
 }

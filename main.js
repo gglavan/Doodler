@@ -88,7 +88,24 @@ function createWindow () {
         }
       }
     ]
-  }]);
+  },{
+  label: 'Edit',
+    submenu: [
+      {
+        label: 'Undo',
+        accelerator: process.platform === 'darwin' ? 'Cmd+Z' : 'Ctrl+Z',
+        click() {
+          win.webContents.send('undo-option');
+        }
+      },
+      {
+        label: 'Redo',
+        accelerator: process.platform === 'darwin' ? 'Cmd+Y' : 'Ctrl+Y',
+        click() {
+          win.webContents.send('redo-option');
+        }
+      }
+  ]}]);
   Menu.setApplicationMenu(menu);
 }
 
