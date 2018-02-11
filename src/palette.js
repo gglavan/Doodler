@@ -13,5 +13,4 @@ const demoColorPicker = new iro.ColorPicker("#colorWheelDemo", {
 
 demoColorPicker.on("color:change", function(color, changes) {
   activeColor = color.hexString;
-  console.log(activeColor)
 });

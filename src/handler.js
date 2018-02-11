@@ -7,6 +7,12 @@ let img;
 let cPushArray = new Array();
 let cStep = -1;
 
+let prevTool = null;
+let activeTool;
+let activeColor = "#000";
+let prevSidebar = null;
+let activeSidebar = 0;
+
 ipcRenderer.on('open-file', (event, file) => {
 	img = new Image();
 	img.onload = function () {
@@ -15,6 +21,9 @@ ipcRenderer.on('open-file', (event, file) => {
 		ctx.drawImage(img, 0, 0, img.width, img.height);
 		cPushArray = new Array();
 		cStep = -1;
+		if (activeTool)
+			activeTool.body.classList.remove('active-option')
+		activeTool = null;
 	};
 	img.src = file;
 });
@@ -35,11 +44,7 @@ ipcRenderer.on('redo-option', (event) => {
 	cRedo();	
 });
 
-let prevTool = null;
-let activeTool;
-let activeColor = "#000";
-let prevSidebar = null;
-let activeSidebar = 0;
+
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -164,7 +169,9 @@ function pick() {
 	activeTool = Picker;
 	Picker.body.classList.add('active-option');
 	Picker.active = true;
-	// slide();
+	tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+  tempCtx.drawImage(canvas, 0, 0);
 }
 
 /////////////////////////////////////////////////

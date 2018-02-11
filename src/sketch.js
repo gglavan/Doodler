@@ -13,6 +13,7 @@ let mousePressed = false;
 let lastX, lastY;
 let stPoint;
 let endPoint;
+let pickedColor = activeColor;
 
 canvas.addEventListener('mousedown', function (e) {
   mousePressed = true;
@@ -23,6 +24,14 @@ canvas.addEventListener('mousedown', function (e) {
       break;
     case Line:
       mouseDown(e);
+      break;
+    case Picker:
+      activeTool = null;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+      Picker.body.classList.remove('active-option');
+      activeColor = pickedColor;
+      demoColorPicker.color.hexString = activeColor;
       break;
   }
 });
@@ -35,6 +44,9 @@ canvas.addEventListener('mousemove', function (e) {
       break;
     case Line:
       mouseMove(e);
+      break;
+    case Picker:
+      pickColor(e);
       break;
   }
 });
@@ -49,6 +61,10 @@ canvas.addEventListener('mouseup', function (e) {
 canvas.addEventListener('mouseout', function (e) {
   mousePressed = false;
   cPush();
+  if(activeTool == Picker) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+  }
 });
 
 function Draw(x, y, isDown) {
@@ -108,25 +124,60 @@ function cPush() {
   cStep++;
   if (cStep < cPushArray.length) { cPushArray.length = cStep; }
   cPushArray.push(document.getElementById('can').toDataURL());
-  document.title = cStep + ":" + cPushArray.length;
 }
 
 function cUndo() {
   if (cStep > 0) {
-      cStep--;
-      var canvasPic = new Image();
-      canvasPic.src = cPushArray[cStep];
-      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
-      document.title = cStep + ":" + cPushArray.length;
+    cStep--;
+    var canvasPic = new Image();
+    canvasPic.src = cPushArray[cStep];
+    canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
   }
 }
 
 function cRedo() {
   if (cStep < cPushArray.length-1) {
-      cStep++;
-      var canvasPic = new Image();
-      canvasPic.src = cPushArray[cStep];
-      canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
-      document.title = cStep + ":" + cPushArray.length;
+    cStep++;
+    var canvasPic = new Image();
+    canvasPic.src = cPushArray[cStep];
+    canvasPic.onload = function () { ctx.drawImage(canvasPic, 0, 0); }
   }
+}
+
+// Picker
+
+function pickColor(e) {
+  const pos = findPos(canvas);
+  const x = e.pageX - pos.x;
+  const y = e.pageY - pos.y;
+  const c = canvas.getContext('2d');
+  const p = c.getImageData(x, y, 1, 1).data; 
+  pickedColor = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.rect(x + 15, y + 20, 20, 20);
+  ctx.fillStyle = pickedColor;
+  ctx.fill();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = '#000';
+  ctx.stroke();
+}
+
+function findPos(obj) {
+  let curleft = 0, curtop = 0;
+  if (obj.offsetParent) {
+    do {
+      curleft += obj.offsetLeft;
+      curtop += obj.offsetTop;
+    } while (obj = obj.offsetParent);
+    return { x: curleft, y: curtop };
+  }
+  return undefined;
+}
+
+function rgbToHex(r, g, b) {
+  if (r > 255 || g > 255 || b > 255)
+      throw "Invalid color component";
+  return ((r << 16) | (g << 8) | b).toString(16);
 }
