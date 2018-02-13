@@ -3,12 +3,33 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/welcome.css">
+    <link rel="stylesheet" href="../assets/icons/flaticon.css">
   </head>
   <body>
     <div class="center-wrapper">
       <img src="../assets/icons/pen.svg" alt="" width="150px;" height="150px;">
       <h1>Welcome to Doodler !</h1>
       <h3>A single place for <span>doodling</span>, <span>sketching</span>, <span>editing</span> and <span>sharing</span> photos on social media platforms.</h3>
+    <div class="options-container">
+      <div class="project-option" id="new-project"><i class="flaticon-file"></i>Create a new project</div>
+      <div class="project-option" id="open-project"><i class="flaticon-folder"></i>Open an existing project</div>
     </div>
+    </div>
+  <script>
+    const {ipcRenderer, remote} = require('electron');  
+    const main = remote.require("./main.js");
+
+    const newProject = document.getElementById('new-project');
+    const openProject = document.getElementById('open-project');
+
+    newProject.addEventListener('click', () => {
+      ipcRenderer.send('new-project', 1);  
+    })
+
+    openProject.addEventListener('click', () => {
+      ipcRenderer.send('open-project', 1);  
+    })
+  
+  </script>
   </body>
 </html>

@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 09/02/2018 16:05
+    Creation date: 13/02/2018 20:04
     */
 
     @font-face {
@@ -36,44 +36,58 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-reflect:before { content: "\f100"; }
-.flaticon-rotate:before { content: "\f101"; }
-.flaticon-loupe:before { content: "\f102"; }
-.flaticon-paint-palette:before { content: "\f103"; }
-.flaticon-right-triangle:before { content: "\f104"; }
-.flaticon-compass:before { content: "\f105"; }
-.flaticon-eraser:before { content: "\f106"; }
-.flaticon-circle-ruler:before { content: "\f107"; }
-.flaticon-graphic-design-tool:before { content: "\f108"; }
-.flaticon-paper:before { content: "\f109"; }
-.flaticon-eyedropper:before { content: "\f10a"; }
-.flaticon-pen-tool:before { content: "\f10b"; }
-.flaticon-scissors:before { content: "\f10c"; }
-.flaticon-paint-can:before { content: "\f10d"; }
-.flaticon-ruler:before { content: "\f10e"; }
-.flaticon-pencil:before { content: "\f10f"; }
-.flaticon-transform-box:before { content: "\f110"; }
-.flaticon-graphic-design:before { content: "\f111"; }
-.flaticon-paint-brush:before { content: "\f112"; }
-.flaticon-paint-palette-and-brush:before { content: "\f113"; }
+    .flaticon-file:before { content: "\f100"; }
+.flaticon-folder:before { content: "\f101"; }
+.flaticon-remove-symbol:before { content: "\f102"; }
+.flaticon-exit-to-app-button:before { content: "\f103"; }
+.flaticon-repeat:before { content: "\f104"; }
+.flaticon-move:before { content: "\f105"; }
+.flaticon-correct-symbol:before { content: "\f106"; }
+.flaticon-arrow-pointing-to-right:before { content: "\f107"; }
+.flaticon-arrow-pointing-to-left:before { content: "\f108"; }
+.flaticon-arrow-pointing-down:before { content: "\f109"; }
+.flaticon-arrow-up:before { content: "\f10a"; }
+.flaticon-crop-symbol:before { content: "\f10b"; }
+.flaticon-zoom-out:before { content: "\f10c"; }
+.flaticon-zoom-in:before { content: "\f10d"; }
+.flaticon-reflect:before { content: "\f10e"; }
+.flaticon-rotate:before { content: "\f10f"; }
+.flaticon-paint-palette:before { content: "\f110"; }
+.flaticon-eraser:before { content: "\f111"; }
+.flaticon-circle-ruler:before { content: "\f112"; }
+.flaticon-paper:before { content: "\f113"; }
+.flaticon-eyedropper:before { content: "\f114"; }
+.flaticon-scissors:before { content: "\f115"; }
+.flaticon-paint-can:before { content: "\f116"; }
+.flaticon-ruler:before { content: "\f117"; }
+.flaticon-pencil:before { content: "\f118"; }
+.flaticon-transform-box:before { content: "\f119"; }
+.flaticon-graphic-design:before { content: "\f11a"; }
     
-    $font-Flaticon-reflect: "\f100";
-    $font-Flaticon-rotate: "\f101";
-    $font-Flaticon-loupe: "\f102";
-    $font-Flaticon-paint-palette: "\f103";
-    $font-Flaticon-right-triangle: "\f104";
-    $font-Flaticon-compass: "\f105";
-    $font-Flaticon-eraser: "\f106";
-    $font-Flaticon-circle-ruler: "\f107";
-    $font-Flaticon-graphic-design-tool: "\f108";
-    $font-Flaticon-paper: "\f109";
-    $font-Flaticon-eyedropper: "\f10a";
-    $font-Flaticon-pen-tool: "\f10b";
-    $font-Flaticon-scissors: "\f10c";
-    $font-Flaticon-paint-can: "\f10d";
-    $font-Flaticon-ruler: "\f10e";
-    $font-Flaticon-pencil: "\f10f";
-    $font-Flaticon-transform-box: "\f110";
-    $font-Flaticon-graphic-design: "\f111";
-    $font-Flaticon-paint-brush: "\f112";
-    $font-Flaticon-paint-palette-and-brush: "\f113";
+    $font-Flaticon-file: "\f100";
+    $font-Flaticon-folder: "\f101";
+    $font-Flaticon-remove-symbol: "\f102";
+    $font-Flaticon-exit-to-app-button: "\f103";
+    $font-Flaticon-repeat: "\f104";
+    $font-Flaticon-move: "\f105";
+    $font-Flaticon-correct-symbol: "\f106";
+    $font-Flaticon-arrow-pointing-to-right: "\f107";
+    $font-Flaticon-arrow-pointing-to-left: "\f108";
+    $font-Flaticon-arrow-pointing-down: "\f109";
+    $font-Flaticon-arrow-up: "\f10a";
+    $font-Flaticon-crop-symbol: "\f10b";
+    $font-Flaticon-zoom-out: "\f10c";
+    $font-Flaticon-zoom-in: "\f10d";
+    $font-Flaticon-reflect: "\f10e";
+    $font-Flaticon-rotate: "\f10f";
+    $font-Flaticon-paint-palette: "\f110";
+    $font-Flaticon-eraser: "\f111";
+    $font-Flaticon-circle-ruler: "\f112";
+    $font-Flaticon-paper: "\f113";
+    $font-Flaticon-eyedropper: "\f114";
+    $font-Flaticon-scissors: "\f115";
+    $font-Flaticon-paint-can: "\f116";
+    $font-Flaticon-ruler: "\f117";
+    $font-Flaticon-pencil: "\f118";
+    $font-Flaticon-transform-box: "\f119";
+    $font-Flaticon-graphic-design: "\f11a";

@@ -55,3 +55,34 @@ body {
 .center-wrapper span {
   font-family: roboto-regular;
 }
+
+.options-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-family: roboto-medium;
+  color: #8b8c8e;
+}
+
+.options-container [class^="flaticon-"]:before {
+  color: #8b8c8e;
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.project-option {
+  display: flex;
+  align-items: center;
+  border: 2px solid #8b8c8e;
+  border-radius: 5px;
+  margin-right: 20px;
+  padding: 8px;
+  width: 220px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+.project-option:hover {
+  background-color: #373e47;
+}

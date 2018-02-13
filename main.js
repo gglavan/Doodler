@@ -122,3 +122,26 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+ipc.on('new-project', (event, arg) => {  
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'src/index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+});
+
+ipc.on('open-project', (event, arg) => {  
+  dialog.showOpenDialog({
+    properties: ['openFile']
+  }, function (file) { 
+    if (file) {
+      win.loadURL(url.format({
+        pathname: path.join(__dirname, 'src/index.html'),
+        protocol: 'file:',
+        slashes: true
+      }));
+    }
+    setTimeout(() => win.webContents.send('open-file', file), 1000);
+  })
+});

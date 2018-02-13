@@ -152,3 +152,15 @@ threshold.onchange = function () {
     ctx.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height);
   }
 }
+
+function resetFilters() {
+	contrastValueSlider.value = 0;
+	contrastValue.innerHTML = 0;
+	brightnessValueSlider.value = 0;
+	brightnessValue.innerHTML = 0;
+	saturationValueSlider.value = 0;
+	saturationValue.innerHTML = 0;
+  grayscale.checked = false;
+  invert.checked = false;
+  threshold.checked = false;
+}

@@ -12,6 +12,7 @@
     "electron": "1.7.11"
   },
   "dependencies": {
+    "cropperjs": "^1.2.2",
     "electron-canvas-to-buffer": "^2.0.0",
     "jquery": "^3.3.1"
   }

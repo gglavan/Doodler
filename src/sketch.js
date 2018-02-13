@@ -8,6 +8,7 @@ canvas.height = 600;
 
 ctx.fillStyle="#fff";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
+tempCtx.drawImage(canvas, 0, 0);
 
 let mousePressed = false;
 let lastX, lastY;

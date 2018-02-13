@@ -1,9 +1,9 @@
 const ipcRenderer = require('electron').ipcRenderer;
-const webFrame = require('electron');
-const canvasBuffer = require('electron-canvas-to-buffer')
-const fs = require('fs')
+const canvasBuffer = require('electron-canvas-to-buffer');
+const fs = require('fs');
 
 let img;
+let cropper;
 let cPushArray = new Array();
 let cStep = -1;
 
@@ -26,6 +26,7 @@ ipcRenderer.on('open-file', (event, file) => {
 		activeTool = null;
 	};
 	img.src = file;
+	resetFilters();
 });
 
 ipcRenderer.on('save-file', (event, file) => {
@@ -64,8 +65,7 @@ const Pencil = {
 	body: document.getElementById('pencil'),
 	sidebar: document.getElementById('pencil-sidebar'),
 	size: 2,
-	color: activeColor,
-	active: false
+	color: activeColor
 }
 
 /////////////////////////////////////////////////
@@ -75,6 +75,7 @@ Pencil.body.addEventListener('click', pencilDraw);
 function pencilDraw() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Pencil;
 	activeTool = Pencil;
 	Pencil.body.classList.add('active-option');
@@ -88,8 +89,7 @@ const Line = {
 	body: document.getElementById('line'),
 	sidebar: document.getElementById('line-sidebar'),
 	size: 2,
-	color: activeColor,
-	active: false
+	color: activeColor
 }
 
 /////////////////////////////////////////////////
@@ -99,6 +99,7 @@ Line.body.addEventListener('click', lineDraw);
 function lineDraw() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Line;
 	activeTool = Line;
 	Line.body.classList.add('active-option');
@@ -111,8 +112,7 @@ function lineDraw() {
 const Palette = {
 	body: document.getElementById('color-palette'),
 	sidebar: document.getElementById('palette-sidebar'),
-	color: '#000',
-	active: false
+	color: '#000'
 }
 
 Palette.body.addEventListener('click', colorSelector);
@@ -120,6 +120,7 @@ Palette.body.addEventListener('click', colorSelector);
 function colorSelector() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Palette;
 	activeTool = Palette;
 	Palette.body.classList.add('active-option');
@@ -136,8 +137,7 @@ const Rubber = {
 	body: document.getElementById('rubber'),
 	sidebar: document.getElementById('rubber-sidebar'),
 	size: 30,
-	color: '#fff',
-	active: false
+	color: '#fff'
 }
 
 Rubber.body.addEventListener('click', erase);
@@ -145,6 +145,7 @@ Rubber.body.addEventListener('click', erase);
 function erase() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Rubber;
 	activeTool = Rubber;
 	Rubber.body.classList.add('active-option');
@@ -157,8 +158,7 @@ function erase() {
 const Picker = {
 	body: document.getElementById('picker'),
 	size: 30,
-	color: '#fff',
-	active: false
+	color: '#fff'
 }
 
 Picker.body.addEventListener('click', pick);
@@ -166,6 +166,7 @@ Picker.body.addEventListener('click', pick);
 function pick() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Picker;
 	activeTool = Picker;
 	Picker.body.classList.add('active-option');
@@ -180,8 +181,7 @@ function pick() {
 const Crop = {
 	body: document.getElementById('scissors'),
 	sidebar: document.getElementById('scissors-sidebar'),
-	size: 5,
-	active: false
+	size: 5
 }
 
 Crop.body.addEventListener('click', crop);
@@ -194,6 +194,11 @@ function crop() {
 	Crop.body.classList.add('active-option');
 	Crop.active = true;
 	slide();
+	const canvas = document.getElementById('can');
+	cropper = new Cropper(can, {
+  aspectRatio: NaN,
+  crop: function(e) {}
+});
 }
 
 /////////////////////////////////////////////////
@@ -201,8 +206,7 @@ function crop() {
 const Rotate = {
 	body: document.getElementById('rotate'),
 	sidebar: document.getElementById('rotate-sidebar'),
-	size: 5,
-	active: false
+	size: 5
 }
 
 Rotate.body.addEventListener('click', rotate);
@@ -210,6 +214,7 @@ Rotate.body.addEventListener('click', rotate);
 function rotate() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Rotate;
 	activeTool = Rotate;
 	Rotate.active = true;
@@ -233,32 +238,10 @@ function rotate() {
 
 /////////////////////////////////////////////////
 
-const Zoom = {
-	body: document.getElementById('zoom'),
-	sidebar: document.getElementById('zoom-sidebar'),
-	size: 5,
-	active: false
-}
-
-Zoom.body.addEventListener('click', zoom);
-
-function zoom() {
-	if (prevTool)
-		prevTool.body.classList.remove('active-option')
-	prevTool = Zoom;
-	activeTool = Zoom;
-	Zoom.body.classList.add('active-option');
-	Zoom.active = true;
-	slide();
-}
-
-/////////////////////////////////////////////////
-
 const Mirror = {
 	body: document.getElementById('mirror'),
 	sidebar: document.getElementById('mirror-sidebar'),
-	size: 1,
-	active: false
+	size: 1
 }
 
 Mirror.body.addEventListener('click', mirror);
@@ -266,9 +249,45 @@ Mirror.body.addEventListener('click', mirror);
 function mirror() {
 	if (prevTool)
 		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
 	prevTool = Mirror;
 	activeTool = Mirror;
 	Mirror.body.classList.add('active-option');
 	Mirror.active = true;
 	slide();
 }
+
+const moveModeOption = document.getElementById('move-mode');
+const cropModeOption = document.getElementById('crop-mode');
+const zoomInOption = document.getElementById('zoom-in');
+const zoomOutOption = document.getElementById('zoom-out');
+const moveLeftOption = document.getElementById('move-left');
+const moveRightOption = document.getElementById('move-right');
+const moveUpOption = document.getElementById('move-up');
+const moveDownOption = document.getElementById('move-down');
+const cropOption = document.getElementById('crop');
+const clearOption = document.getElementById('clear');
+const resetOption = document.getElementById('reset');
+const exitOption = document.getElementById('exit');
+
+moveModeOption.addEventListener('click', () => cropper.setDragMode('move'));
+cropModeOption.addEventListener('click', () => cropper.setDragMode('crop'));
+zoomInOption.addEventListener('click', () => cropper.zoom(0.1));
+zoomOutOption.addEventListener('click', () => cropper.zoom(-0.1));
+moveLeftOption.addEventListener('click', () => cropper.move(10, 0));
+moveRightOption.addEventListener('click', () => cropper.move(-10, 0));
+moveUpOption.addEventListener('click', () => cropper.move(0, 10));
+moveDownOption.addEventListener('click', () => cropper.move(0, -10));
+cropOption.addEventListener('click', () => {
+	const croppedData = cropper.getData();
+	tempCanvas.width = croppedData.width;
+	tempCanvas.height = croppedData.height;
+	tempCtx.drawImage(canvas, croppedData.x, croppedData.y, croppedData.width, croppedData.height, 0, 0, tempCanvas.width, tempCanvas.height);
+	canvas.width = tempCanvas.width;
+	canvas.height = tempCanvas.height;
+	cropper.destroy();
+	ctx.drawImage(tempCanvas, 0, 0);
+});
+clearOption.addEventListener('click', () => cropper.clear());
+resetOption.addEventListener('click', () => cropper.reset());
+exitOption.addEventListener('click', () => cropper.destroy());

@@ -4,12 +4,14 @@
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/icons/flaticon.css">
-    
+    <link  href="../node_modules/cropperjs/dist/cropper.css" rel="stylesheet">
+    <script src="../node_modules/cropperjs/dist/cropper.js"></script>
   </head>
   <body>
     <!-- Sketch Container -->
-    <canvas id="can"></canvas>
-
+    <div>
+      <canvas id="can"></canvas>
+    </div>
     <!-- Left Sidebar Menu -->
     <div class="sidebar-left">
       <div id="pencil" class="icon-option" title="Pencil">
@@ -33,7 +35,7 @@
       <div id="mirror" class="icon-option" title="Mirror">
         <i class="flaticon-reflect"></i>
       </div>
-      <div id="scissors" class="icon-option" title="Scissors">
+      <div id="scissors" class="icon-option" title="Crop">
         <i class="flaticon-transform-box"></i>
       </div>
       <div id="zoom" class="icon-option" title="Zoom">
@@ -116,13 +118,34 @@
       </div>
     </div>
     <div class="sidebar-right" id="scissors-sidebar">
-      <h3>Scissors</h3>
+      <div class="sidebar-title">Crop</div>
+      <div class="title-separator"></div>
+      <div class="crop-tool-set">
+        <button id="move-mode"><i class="flaticon-move"></i></button>
+        <button id="crop-mode"><i class="flaticon-crop-symbol"></i></button>
+      </div>
+      <div class="crop-tool-set">
+        <button id="zoom-in"><i class="flaticon-zoom-in"></i></button>
+        <button id="zoom-out"><i class="flaticon-zoom-out"></i></button>
+      </div>
+      <div class="crop-tool-set">
+        <button id="move-left"><i class="flaticon-arrow-pointing-to-left"></i></button>
+        <button id="move-right"><i class="flaticon-arrow-pointing-to-right"></i></button>
+      </div>
+      <div class="crop-tool-set">
+        <button id="move-up"><i class="flaticon-arrow-up"></i></button>
+        <button id="move-down"><i class="flaticon-arrow-pointing-down"></i></button>
+      </div>
+      <div class="crop-tool-set">
+        <button id="crop"><i class="flaticon-correct-symbol"></i></button>
+        <button id="clear"><i class="flaticon-remove-symbol"></i></button>
+      </div>
+      <div class="crop-tool-set">
+        <button id="reset"><i class="flaticon-repeat"></i></button>
+        <button id="exit"><i class="flaticon-exit-to-app-button"></i></button>
+      </div>
     </div>
     <div class="sidebar-right" id="rotate-sidebar">
-      <h3>Rotate</h3>
-    </div>
-    <div class="sidebar-right" id="zoom-sidebar">
-      <h3>Zoom</h3>
     </div>
     <div class="sidebar-right" id="mirror-sidebar">
       <h3>Mirror</h3>
