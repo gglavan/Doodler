@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <link rel="stylesheet" type="text/css" href="../semantic/out/semantic.min.css">
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/icons/flaticon.css">
     
@@ -50,7 +49,7 @@
     <div class="sidebar-right" id="pencil-sidebar">
       <div class="sidebar-title">Pencil</div>
       <div class="title-separator"></div>
-      <div class="""slidecontainer">
+      <div class="slidecontainer">
         <div>Size: <span id="pencil-size"></span>px</div>
         <input type="range" min="1" max="100" value="2" class="slider" id="pencil-size-slider">
       </div>
@@ -58,7 +57,7 @@
     <div class="sidebar-right" id="line-sidebar">
       <div class="sidebar-title">Line</div>
       <div class="title-separator"></div>
-      <div class="""slidecontainer">
+      <div class="slidecontainer">
         <div>Size: <span id="line-size"></span>px</div>
         <input type="range" min="1" max="100" value="2" class="slider" id="line-size-slider">
       </div>
@@ -67,12 +66,51 @@
       <div class="sidebar-title">Palette</div>
       <div class="title-separator"></div>
       <div class="wheel" id="colorWheelDemo"></div>
-      <!-- <input type="number"> -->
+      <div class="slidecontainer switch-align">
+        <div>Color:</div>
+        <form id="color-form">
+          <input type="text" id="color-value">
+        </form>
+      </div>
+      <div class="title-separator"></div>
+      <div class="slidecontainer">
+        <div>Contrast: <span id="contrast-value"></span>%</div>
+        <input type="range" min="-100" max="100" value="0" class="slider" id="contrast-value-slider">
+      </div>
+      <div class="slidecontainer">
+        <div>Brightness: <span id="brightness-value"></span>%</div>
+        <input type="range" min="-100" max="100" value="0" class="slider" id="brightness-value-slider">
+      </div>
+      <div class="slidecontainer">
+        <div>Saturation: <span id="saturation-value"></span>%</div>
+        <input type="range" min="0" max="100" value="0" class="slider" id="saturation-value-slider">
+      </div>
+      <div class="slidecontainer switch-align">
+        <div>Grayscale:</div>
+        <label class="switch">
+          <input type="checkbox" id="grayscale">
+          <span class="toggle round"></span>
+        </label>
+      </div>
+      <div class="slidecontainer switch-align">
+        <div>Invert:</div>
+        <label class="switch">
+          <input type="checkbox" id="invert">
+          <span class="toggle round"></span>
+        </label>
+      </div>
+      <div class="slidecontainer switch-align">
+        <div>Threshold:</div>
+        <label class="switch">
+          <input type="checkbox" id="threshold">
+          <span class="toggle round"></span>
+        </label>
+      </div>
     </div>
     <div class="sidebar-right" id="rubber-sidebar">
       <div class="sidebar-title">Rubber</div>
       <div class="title-separator"></div>
-      <div class="""slidecontainer">
+      <div class="slidecontainer">
         <div>Size: <span id="rubber-size"></span>px</div>
         <input type="range" min="1" max="100" value="10" class="slider" id="rubber-size-slider">
       </div>
@@ -92,15 +130,14 @@
     
 
     <!-- end of sidebars -->
-
     <script> if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../semantic/out/semantic.min.js"></script>
     <script type="text/javascript" src="handler.js"> </script>
     <script src="sketch.js"></script>
     <script src="../addons/iro.js-master/dist/iro.min.js"></script>
     <script src="palette.js"></script>
     <script src="../addons/slider.js"></script>
+    <script src="filter.js"></script>
     <script>
       if (window.module) 
         module = window.module;

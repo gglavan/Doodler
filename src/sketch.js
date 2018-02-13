@@ -145,7 +145,6 @@ function cRedo() {
 }
 
 // Picker
-
 function pickColor(e) {
   const pos = findPos(canvas);
   const x = e.pageX - pos.x;

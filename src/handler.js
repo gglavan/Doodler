@@ -44,8 +44,6 @@ ipcRenderer.on('redo-option', (event) => {
 	cRedo();	
 });
 
-
-
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 async function slide() {
@@ -127,6 +125,9 @@ function colorSelector() {
 	Palette.body.classList.add('active-option');
 	Palette.active = true;
 	slide();
+	tempCanvas.width = canvas.width;
+	tempCanvas.height = canvas.height;
+	tempCtx.drawImage(canvas, 0, 0);
 }
 
 /////////////////////////////////////////////////
@@ -211,7 +212,6 @@ function rotate() {
 		prevTool.body.classList.remove('active-option')
 	prevTool = Rotate;
 	activeTool = Rotate;
-	Rotate.body.classList.add('active-option');
 	Rotate.active = true;
 
 	const tempCanvas = document.createElement("canvas");
