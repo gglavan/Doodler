@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 13/02/2018 20:04
+    Creation date: 14/02/2018 01:12
     */
 
     @font-face {
@@ -36,58 +36,62 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-file:before { content: "\f100"; }
-.flaticon-folder:before { content: "\f101"; }
-.flaticon-remove-symbol:before { content: "\f102"; }
-.flaticon-exit-to-app-button:before { content: "\f103"; }
-.flaticon-repeat:before { content: "\f104"; }
-.flaticon-move:before { content: "\f105"; }
-.flaticon-correct-symbol:before { content: "\f106"; }
-.flaticon-arrow-pointing-to-right:before { content: "\f107"; }
-.flaticon-arrow-pointing-to-left:before { content: "\f108"; }
-.flaticon-arrow-pointing-down:before { content: "\f109"; }
-.flaticon-arrow-up:before { content: "\f10a"; }
-.flaticon-crop-symbol:before { content: "\f10b"; }
-.flaticon-zoom-out:before { content: "\f10c"; }
-.flaticon-zoom-in:before { content: "\f10d"; }
-.flaticon-reflect:before { content: "\f10e"; }
-.flaticon-rotate:before { content: "\f10f"; }
-.flaticon-paint-palette:before { content: "\f110"; }
-.flaticon-eraser:before { content: "\f111"; }
-.flaticon-circle-ruler:before { content: "\f112"; }
-.flaticon-paper:before { content: "\f113"; }
-.flaticon-eyedropper:before { content: "\f114"; }
-.flaticon-scissors:before { content: "\f115"; }
-.flaticon-paint-can:before { content: "\f116"; }
-.flaticon-ruler:before { content: "\f117"; }
-.flaticon-pencil:before { content: "\f118"; }
-.flaticon-transform-box:before { content: "\f119"; }
-.flaticon-graphic-design:before { content: "\f11a"; }
+    .flaticon-cancel-mark:before { content: "\f100"; }
+.flaticon-photogram:before { content: "\f101"; }
+.flaticon-maximize:before { content: "\f102"; }
+.flaticon-file:before { content: "\f103"; }
+.flaticon-folder:before { content: "\f104"; }
+.flaticon-exit-to-app-button:before { content: "\f105"; }
+.flaticon-repeat:before { content: "\f106"; }
+.flaticon-move:before { content: "\f107"; }
+.flaticon-correct-symbol:before { content: "\f108"; }
+.flaticon-arrow-pointing-to-right:before { content: "\f109"; }
+.flaticon-arrow-pointing-to-left:before { content: "\f10a"; }
+.flaticon-arrow-pointing-down:before { content: "\f10b"; }
+.flaticon-arrow-up:before { content: "\f10c"; }
+.flaticon-crop-symbol:before { content: "\f10d"; }
+.flaticon-zoom-out:before { content: "\f10e"; }
+.flaticon-zoom-in:before { content: "\f10f"; }
+.flaticon-reflect:before { content: "\f110"; }
+.flaticon-rotate:before { content: "\f111"; }
+.flaticon-paint-palette:before { content: "\f112"; }
+.flaticon-eraser:before { content: "\f113"; }
+.flaticon-circle-ruler:before { content: "\f114"; }
+.flaticon-paper:before { content: "\f115"; }
+.flaticon-eyedropper:before { content: "\f116"; }
+.flaticon-scissors:before { content: "\f117"; }
+.flaticon-paint-can:before { content: "\f118"; }
+.flaticon-ruler:before { content: "\f119"; }
+.flaticon-pencil:before { content: "\f11a"; }
+.flaticon-transform-box:before { content: "\f11b"; }
+.flaticon-graphic-design:before { content: "\f11c"; }
     
-    $font-Flaticon-file: "\f100";
-    $font-Flaticon-folder: "\f101";
-    $font-Flaticon-remove-symbol: "\f102";
-    $font-Flaticon-exit-to-app-button: "\f103";
-    $font-Flaticon-repeat: "\f104";
-    $font-Flaticon-move: "\f105";
-    $font-Flaticon-correct-symbol: "\f106";
-    $font-Flaticon-arrow-pointing-to-right: "\f107";
-    $font-Flaticon-arrow-pointing-to-left: "\f108";
-    $font-Flaticon-arrow-pointing-down: "\f109";
-    $font-Flaticon-arrow-up: "\f10a";
-    $font-Flaticon-crop-symbol: "\f10b";
-    $font-Flaticon-zoom-out: "\f10c";
-    $font-Flaticon-zoom-in: "\f10d";
-    $font-Flaticon-reflect: "\f10e";
-    $font-Flaticon-rotate: "\f10f";
-    $font-Flaticon-paint-palette: "\f110";
-    $font-Flaticon-eraser: "\f111";
-    $font-Flaticon-circle-ruler: "\f112";
-    $font-Flaticon-paper: "\f113";
-    $font-Flaticon-eyedropper: "\f114";
-    $font-Flaticon-scissors: "\f115";
-    $font-Flaticon-paint-can: "\f116";
-    $font-Flaticon-ruler: "\f117";
-    $font-Flaticon-pencil: "\f118";
-    $font-Flaticon-transform-box: "\f119";
-    $font-Flaticon-graphic-design: "\f11a";
+    $font-Flaticon-cancel-mark: "\f100";
+    $font-Flaticon-photogram: "\f101";
+    $font-Flaticon-maximize: "\f102";
+    $font-Flaticon-file: "\f103";
+    $font-Flaticon-folder: "\f104";
+    $font-Flaticon-exit-to-app-button: "\f105";
+    $font-Flaticon-repeat: "\f106";
+    $font-Flaticon-move: "\f107";
+    $font-Flaticon-correct-symbol: "\f108";
+    $font-Flaticon-arrow-pointing-to-right: "\f109";
+    $font-Flaticon-arrow-pointing-to-left: "\f10a";
+    $font-Flaticon-arrow-pointing-down: "\f10b";
+    $font-Flaticon-arrow-up: "\f10c";
+    $font-Flaticon-crop-symbol: "\f10d";
+    $font-Flaticon-zoom-out: "\f10e";
+    $font-Flaticon-zoom-in: "\f10f";
+    $font-Flaticon-reflect: "\f110";
+    $font-Flaticon-rotate: "\f111";
+    $font-Flaticon-paint-palette: "\f112";
+    $font-Flaticon-eraser: "\f113";
+    $font-Flaticon-circle-ruler: "\f114";
+    $font-Flaticon-paper: "\f115";
+    $font-Flaticon-eyedropper: "\f116";
+    $font-Flaticon-scissors: "\f117";
+    $font-Flaticon-paint-can: "\f118";
+    $font-Flaticon-ruler: "\f119";
+    $font-Flaticon-pencil: "\f11a";
+    $font-Flaticon-transform-box: "\f11b";
+    $font-Flaticon-graphic-design: "\f11c";

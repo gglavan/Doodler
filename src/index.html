@@ -38,13 +38,12 @@
       <div id="scissors" class="icon-option" title="Crop">
         <i class="flaticon-transform-box"></i>
       </div>
-      <div id="zoom" class="icon-option" title="Zoom">
-        <i class="flaticon-loupe"></i>
+      <div id="scale" class="icon-option" title="Scale">
+        <i class="flaticon-maximize"></i>
       </div>
-      
-      <div id="paper" class="icon-option" title="Clear">
-        <i class="flaticon-paper"></i>
-      </div>
+      <div id="slideshow" class="icon-option" title="Slideshow">
+          <i class="flaticon-photogram"></i>
+        </div>
     </div>
 
     <!-- Right Sidebar Menu -->
@@ -121,34 +120,54 @@
       <div class="sidebar-title">Crop</div>
       <div class="title-separator"></div>
       <div class="crop-tool-set">
-        <button id="move-mode"><i class="flaticon-move"></i></button>
-        <button id="crop-mode"><i class="flaticon-crop-symbol"></i></button>
+        <button id="move-mode" title="Move Mode"><i class="flaticon-move"></i></button>
+        <button id="crop-mode" title="Crop Mode"><i class="flaticon-crop-symbol"></i></button>
       </div>
       <div class="crop-tool-set">
-        <button id="zoom-in"><i class="flaticon-zoom-in"></i></button>
-        <button id="zoom-out"><i class="flaticon-zoom-out"></i></button>
+        <button id="zoom-in" title="Zoom In"><i class="flaticon-zoom-in"></i></button>
+        <button id="zoom-out" title="Zoom Out"><i class="flaticon-zoom-out"></i></button>
       </div>
       <div class="crop-tool-set">
-        <button id="move-left"><i class="flaticon-arrow-pointing-to-left"></i></button>
-        <button id="move-right"><i class="flaticon-arrow-pointing-to-right"></i></button>
+        <button id="move-left" title="Move Left"><i class="flaticon-arrow-pointing-to-left"></i></button>
+        <button id="move-right" title="Move Right"><i class="flaticon-arrow-pointing-to-right"></i></button>
       </div>
       <div class="crop-tool-set">
-        <button id="move-up"><i class="flaticon-arrow-up"></i></button>
-        <button id="move-down"><i class="flaticon-arrow-pointing-down"></i></button>
+        <button id="move-up" title="Move Up"><i class="flaticon-arrow-up"></i></button>
+        <button id="move-down" title="Move Down"><i class="flaticon-arrow-pointing-down"></i></button>
       </div>
       <div class="crop-tool-set">
-        <button id="crop"><i class="flaticon-correct-symbol"></i></button>
-        <button id="clear"><i class="flaticon-remove-symbol"></i></button>
+        <button id="crop" title="Crop Image"><i class="flaticon-correct-symbol"></i></button>
+        <button id="clear" title="Clear Crop"><i class="flaticon-cancel-mark"></i></button>
       </div>
       <div class="crop-tool-set">
-        <button id="reset"><i class="flaticon-repeat"></i></button>
-        <button id="exit"><i class="flaticon-exit-to-app-button"></i></button>
+        <button id="reset" title="Reset Crop"><i class="flaticon-repeat"></i></button>
+        <button id="exit" title="Exit Crop"><i class="flaticon-exit-to-app-button"></i></button>
       </div>
     </div>
     <div class="sidebar-right" id="rotate-sidebar">
     </div>
     <div class="sidebar-right" id="mirror-sidebar">
-      <h3>Mirror</h3>
+      <div class="sidebar-title">Mirror</div>
+      <div class="title-separator"></div>  
+    </div>
+    <div class="sidebar-right" id="scale-sidebar">
+      <div class="sidebar-title">Scale</div>
+      <div class="title-separator"></div>
+      <div class="slidecontainer">
+        <div>Scale: x<span id="scale-size"></span></div>
+        <input type="range" min="0" max="100" value="50" class="slider" id="scale-size-slider">
+      </div>
+      <div class="slidecontainer">
+        <div>Width: <span id="width-size"></span>px</div>
+        <input type="number" id="width-size-input">
+      </div>
+      <div class="slidecontainer">
+        <div>Height: <span id="height-size"></span>px</div>
+        <input type="number" id="height-size-input">
+      </div>
+      <div class="slidecontainer">
+        <button id="scale-button">Apply</button>
+      </div>
     </div>
     
 

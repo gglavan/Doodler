@@ -257,6 +257,36 @@ function mirror() {
 	slide();
 }
 
+/////////////////////////////////////////////////
+
+const Scale = {
+	body: document.getElementById('scale'),
+	sidebar: document.getElementById('scale-sidebar'),
+	size: 1
+}
+
+Scale.body.addEventListener('click', scale);
+
+function scale() {
+	if (prevTool)
+		prevTool.body.classList.remove('active-option')
+	if (prevTool == Crop) cropper.destroy();
+	prevTool = Scale;
+	activeTool = Scale;
+	Scale.body.classList.add('active-option');
+	Scale.active = true;
+	slide();
+	cw = canvas.width;
+  ch = canvas.height;
+  tempCanvas.width = cw;
+  tempCanvas.height = ch;
+  tempCtx.drawImage(canvas, 0, 0);
+  
+	document.getElementById('width-size').innerHTML = canvas.width;
+	document.getElementById('height-size').innerHTML = canvas.height;
+	document.getElementById('scale-size').innerHTML = (Number(document.getElementById('scale-size-slider').value) / 50).toFixed(2);
+}
+
 const moveModeOption = document.getElementById('move-mode');
 const cropModeOption = document.getElementById('crop-mode');
 const zoomInOption = document.getElementById('zoom-in');
@@ -291,3 +321,38 @@ cropOption.addEventListener('click', () => {
 clearOption.addEventListener('click', () => cropper.clear());
 resetOption.addEventListener('click', () => cropper.reset());
 exitOption.addEventListener('click', () => cropper.destroy());
+
+const widthSizeInput = document.getElementById('width-size-input');
+const heightSizeInput = document.getElementById('height-size-input');
+const applyScaleBtn = document.getElementById('scale-button');
+
+applyScaleBtn.addEventListener('click', () => {
+	const cw = canvas.width;
+	const ch = canvas.height;
+	tempCanvas.width = cw;
+	tempCanvas.height = ch;
+	tempCtx.drawImage(canvas, 0, 0);
+	canvas.width = Number(widthSizeInput.value);
+	canvas.height = Number(heightSizeInput.value);
+	document.getElementById('width-size').innerHTML = canvas.width;
+	document.getElementById('height-size').innerHTML = canvas.height;
+	ctx.drawImage(tempCanvas, 0, 0, cw, ch, 0, 0, Number(widthSizeInput.value), Number(heightSizeInput.value));
+});
+
+function resizeTo(canvas, pct){
+	canvas.width = tempCanvas.width;
+	canvas.height = tempCanvas.height;
+	canvas.width *= pct;
+  canvas.height *= pct;
+  ctx.drawImage(tempCanvas, 0, 0, cw, ch, 0, 0, cw * pct, ch * pct);
+}
+
+const scaleSizeSlider = document.getElementById('scale-size-slider');
+const scaleSize = document.getElementById('scale-size');
+
+scaleSize.innerHTML = scaleSizeSlider.value;
+scaleSizeSlider.oninput = function() {
+	const scaleValue = (Number(this.value) / 50).toFixed(2);
+	scaleSize.innerHTML = scaleValue;
+	resizeTo(canvas, scaleValue);
+}
