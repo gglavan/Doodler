@@ -17,6 +17,29 @@ An Electron app for doodling, sketching and editing photos.
 * grayscale, inverted, threshold modes
 * saving edited images
 
+### Getting started:
+
+Clone / Download repo -> Open the folder in terminal -> Type: 
+```
+npm install
+```
+To start the app:
+```
+npm start
+```
+To build the app:  
+* Windows
+```
+npm package-win
+```
+* Mac
+```
+npm package-mac
+```
+* Linux
+```
+npm package-linux
+```
 ### Demo:
 
 ##### Welcome page
