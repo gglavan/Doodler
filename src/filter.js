@@ -46,10 +46,10 @@ Filters.contrast = function (pixels, adjustment) {
 };
 
 Filters.saturation = function (pixels, adjustment) {
-  ctx.drawImage(tempCanvas, 0, 0); // image to change
+  ctx.drawImage(tempCanvas, 0, 0);
   ctx.globalCompositeOperation = "saturation";
-  ctx.fillStyle = `hsl(0,100%,${adjustment}%)`; // saturation at 100%
-  ctx.fillRect(0, 0, canvas.width, canvas.height); // apply the comp filter
+  ctx.fillStyle = `hsl(0,100%,${adjustment}%)`;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.globalCompositeOperation = "source-over";
 };
 

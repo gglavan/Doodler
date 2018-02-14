@@ -4,16 +4,19 @@
   "description": "image editor app",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/pen.png.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Doodler\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
   },
   "author": "gglavan",
   "license": "ISC",
   "devDependencies": {
-    "electron": "1.7.11"
+    "electron": "1.7.11",
+    "electron-packager": "^11.0.1"
   },
   "dependencies": {
     "cropperjs": "^1.2.2",
-    "electron-canvas-to-buffer": "^2.0.0",
-    "jquery": "^3.3.1"
+    "electron-canvas-to-buffer": "^2.0.0"
   }
 }

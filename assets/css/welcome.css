@@ -4,11 +4,6 @@
 }
 
 @font-face {
-  font-family: roboto-light;
-  src: url(../fonts/Roboto-Light.ttf);
-}
-
-@font-face {
   font-family: roboto-medium;
   src: url(../fonts/Roboto-Medium.ttf);
 }
